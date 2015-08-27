@@ -9,12 +9,13 @@ class Consumer(Thread):
     """Consumes the messages from the client's queue."""
     log = logging.getLogger('segment')
 
-    def __init__(self, queue, write_key, upload_size=100, on_error=None):
+    def __init__(self, queue, key=None, secret=None, upload_size=100, on_error=None):
         """Create a consumer thread."""
         Thread.__init__(self)
         self.daemon = True # set as a daemon so the program can exit
         self.upload_size = upload_size
-        self.write_key = write_key
+        self.key = key
+        self.secret = secret
         self.on_error = on_error
         self.queue = queue
         self.retries = 3
@@ -83,7 +84,7 @@ class Consumer(Thread):
     def request(self, batch, attempt=0):
         """Attempt to upload the batch and retry before raising an error """
         try:
-            post(self.write_key, batch=batch)
+            post(self.key, self.secret, batch=batch)
         except:
             if attempt > self.retries:
                 raise

@@ -10,36 +10,25 @@ class TestModule(unittest.TestCase):
 
     def setUp(self):
         self.failed = False
-        analytics.write_key = 'testsecret'
+        analytics.key = 'testkey'
+        analytics.secret = 'testsecret'
         analytics.on_error = self.failed
 
-    def test_no_write_key(self):
-        analytics.write_key = None
-        self.assertRaises(Exception, analytics.track)
+    def test_set_contact(self):
+      analytics.set_contact('contact_uid')
+      analytics.flush()
 
-    def test_track(self):
-        analytics.track('userId', 'python module event')
-        analytics.flush()
+    def test_set_account(self):
+      analytics.set_account('account_uid')
+      analytics.flush()
 
-    def test_identify(self):
-        analytics.identify('userId', { 'email': 'user@email.com' })
-        analytics.flush()
+    def test_track_event(self):
+      analytics.track_event('contact_uid', 'event_uid')
+      analytics.flush()
 
-    def test_group(self):
-        analytics.group('userId', 'groupId')
-        analytics.flush()
-
-    def test_alias(self):
-        analytics.alias('previousId', 'userId')
-        analytics.flush()
-
-    def test_page(self):
-        analytics.page('userId')
-        analytics.flush()
-
-    def test_screen(self):
-        analytics.screen('userId')
-        analytics.flush()
+    def test_track_pageview(self):
+      analytics.track_pageview('contact_uid')
+      analytics.flush()
 
     def test_flush(self):
         analytics.flush()

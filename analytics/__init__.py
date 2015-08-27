@@ -5,37 +5,37 @@ from analytics.client import Client
 __version__ = VERSION
 
 """Settings."""
-write_key = None
+key = "fWlU0N6jJKbcgW_OR6OidQ"
+secret = "UZ8YjpEXXPBYmROvPnJ5jw"
 on_error = None
 debug = False
 send = True
 
 default_client = None
 
+def set_contact(*args, **kwargs):
+  """
+  Send a set_contact request
+  """
+  _proxy('set_contact', *args, **kwargs)
 
-def track(*args, **kwargs):
-    """Send a track call."""
-    _proxy('track', *args, **kwargs)
+def set_account(*args, **kwargs):
+  """
+  Send a set_account request
+  """
+  _proxy('set_account', *args, **kwargs)
 
-def identify(*args, **kwargs):
-    """Send a identify call."""
-    _proxy('identify', *args, **kwargs)
+def track_event(*args, **kwargs):
+  """
+  Send a track_event request
+  """
+  _proxy('track_event', *args, **kwargs)
 
-def group(*args, **kwargs):
-    """Send a group call."""
-    _proxy('group', *args, **kwargs)
-
-def alias(*args, **kwargs):
-    """Send a alias call."""
-    _proxy('alias', *args, **kwargs)
-
-def page(*args, **kwargs):
-    """Send a page call."""
-    _proxy('page', *args, **kwargs)
-
-def screen(*args, **kwargs):
-    """Send a screen call."""
-    _proxy('screen', *args, **kwargs)
+def track_pageview(*args, **kwargs):
+  """
+  Send a track_pageview request
+  """
+  _proxy('track_pageview', *args, **kwargs)
 
 def flush():
     """Tell the client to flush."""
@@ -49,7 +49,7 @@ def _proxy(method, *args, **kwargs):
     """Create an analytics client if one doesn't exist and send to it."""
     global default_client
     if not default_client:
-        default_client = Client(write_key, debug=debug, on_error=on_error,
+        default_client = Client(key, secret, debug=debug, on_error=on_error,
                                 send=send)
 
     fn = getattr(default_client, method)

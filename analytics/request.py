@@ -9,19 +9,19 @@ from requests import sessions
 _session = sessions.Session()
 
 
-def post(write_key, **kwargs):
+def post(key, secret, **kwargs):
     """Post the `kwargs` to the API"""
     log = logging.getLogger('segment')
-    body = kwargs
-    body["sentAt"] = datetime.utcnow().replace(tzinfo=tzutc()).isoformat()
-    url = 'https://api.segment.io/v1/batch'
-    auth = HTTPBasicAuth(write_key, '')
+    body = kwargs['batch']
+    #body["sentAt"] = datetime.utcnow().replace(tzinfo=tzutc()).isoformat()
+    url = 'http://play.salesmachine.net:9000/v1/batch'
+    auth = HTTPBasicAuth(key, secret)
     data = json.dumps(body, cls=DatetimeSerializer)
-    headers = { 'content-type': 'application/json' }
+    headers = {'content-type': 'application/json'}
     log.debug('making request: %s', data)
     res = _session.post(url, data=data, auth=auth, headers=headers, timeout=15)
 
-    if res.status_code == 200:
+    if res.status_code >= 200 and res.status_code < 300:
         log.debug('data uploaded successfully')
         return res
 

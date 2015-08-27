@@ -8,12 +8,11 @@ from analytics.request import post, DatetimeSerializer
 class TestRequests(unittest.TestCase):
 
     def test_valid_request(self):
-        res = post('testsecret', batch=[{
-            'userId': 'userId',
-            'event': 'python event',
-            'type': 'track'
+        res = post('fWlU0N6jJKbcgW_OR6OidQ', 'UZ8YjpEXXPBYmROvPnJ5jw', batch=[{
+            'contact_uid': 'contact_uid',
+            'method': 'set_contact'
         }])
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
 
     def test_invalid_request_error(self):
         self.assertRaises(Exception, post, 'testsecret', '[{]')
