@@ -13,6 +13,7 @@ class TestModule(unittest.TestCase):
         analytics.key = 'testkey'
         analytics.secret = 'testsecret'
         analytics.on_error = self.failed
+        analytics.debug = True
 
     def test_set_contact(self):
       analytics.set_contact('contact_uid')

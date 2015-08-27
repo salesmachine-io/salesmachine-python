@@ -9,12 +9,15 @@ from requests import sessions
 _session = sessions.Session()
 
 
-def post(key, secret, **kwargs):
+def post(key, secret, debug=False, **kwargs):
     """Post the `kwargs` to the API"""
     log = logging.getLogger('segment')
     body = kwargs['batch']
     #body["sentAt"] = datetime.utcnow().replace(tzinfo=tzutc()).isoformat()
-    url = 'http://play.salesmachine.net:9000/v1/batch'
+    if debug:
+      url = 'http://play.salesmachine.net:9000/v1/batch'
+    else:
+      url = 'https://api.salesmachine.io/v1/batch'
     auth = HTTPBasicAuth(key, secret)
     data = json.dumps(body, cls=DatetimeSerializer)
     headers = {'content-type': 'application/json'}

@@ -29,7 +29,7 @@ class Client(object):
         require('secret', secret, string_types)
 
         self.queue = queue.Queue(max_queue_size)
-        self.consumer = Consumer(self.queue, key, secret, on_error=on_error)
+        self.consumer = Consumer(self.queue, key, secret, debug, on_error=on_error)
         self.key = key
         self.on_error = on_error
         self.debug = debug
