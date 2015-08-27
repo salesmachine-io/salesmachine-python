@@ -23,7 +23,7 @@ class Client(object):
     """Create a new Segment client."""
     log = logging.getLogger('segment')
 
-    def __init__(self, key, secret, debug=False, max_queue_size=10000,
+    def __init__(self, key=None, secret=None, debug=False, max_queue_size=10000,
                  send=True, on_error=None):
         require('key', key, string_types)
         require('secret', secret, string_types)
