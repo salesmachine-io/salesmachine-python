@@ -7,7 +7,7 @@ from analytics.request import post
 
 class Consumer(Thread):
     """Consumes the messages from the client's queue."""
-    log = logging.getLogger('segment')
+    log = logging.getLogger('salesmachine')
 
     def __init__(self, queue, key=None, secret=None, upload_size=100, on_error=None):
         """Create a consumer thread."""

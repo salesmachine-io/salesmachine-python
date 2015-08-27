@@ -20,8 +20,8 @@ ID_TYPES = (numbers.Number, string_types)
 
 
 class Client(object):
-    """Create a new Segment client."""
-    log = logging.getLogger('segment')
+    """Create a new Salesmachine client."""
+    log = logging.getLogger('salesmachine')
 
     def __init__(self, key=None, secret=None, debug=False, max_queue_size=10000,
                  send=True, on_error=None):
