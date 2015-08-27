@@ -1,8 +1,6 @@
 salesmachine-python
 ==============
 
-[![Build Status](https://travis-ci.org/segmentio/salesmachine-python.svg?branch=master)](https://travis-ci.org/segmentio/salesmachine-python)
-
 salesmachine-python is a python client for [Salesmachine](http://www.salesmachine.io/)
 
 ## Documentation
