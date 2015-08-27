@@ -22,12 +22,12 @@ Documentation and more details at https://github.com/segmentio/analytics-python
 '''
 
 setup(
-    name='analytics-python',
+    name='salesmachine-python',
     version=VERSION,
-    url='https://github.com/segmentio/analytics-python',
-    author='Segment',
+    url='https://github.com/salesmachine-io/salesmachine-python',
+    author='Salesmachine',
     author_email='friends@segment.com',
-    maintainer='Segment',
+    maintainer='Salesmachine',
     maintainer_email='friends@segment.com',
     test_suite='analytics.test.all',
     packages=['analytics', 'analytics.test'],
