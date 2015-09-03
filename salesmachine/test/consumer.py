@@ -28,7 +28,7 @@ class TestConsumer(unittest.TestCase):
 
     def test_upload(self):
         q = Queue()
-        consumer  = Consumer(q, 'fWlU0N6jJKbcgW_OR6OidQ', 'UZ8YjpEXXPBYmROvPnJ5jw', debug=True)
+        consumer  = Consumer(q, 'key', 'secret', debug=True)
         track = {
             'method': 'set_contact',
             'contact_uid': 'contact_uid'
@@ -39,7 +39,7 @@ class TestConsumer(unittest.TestCase):
         self.assertTrue(success)
 
     def test_request(self):
-        consumer = Consumer(None, 'fWlU0N6jJKbcgW_OR6OidQ', 'UZ8YjpEXXPBYmROvPnJ5jw', debug=True)
+        consumer = Consumer(None, 'key', 'secret', debug=True)
         track = {
             'method': 'set_contact',
             'contact_uid': 'contact_uid'

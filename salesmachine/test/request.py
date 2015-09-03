@@ -8,7 +8,7 @@ from salesmachine.request import post, DatetimeSerializer
 class TestRequests(unittest.TestCase):
 
     def test_valid_request(self):
-        res = post('fWlU0N6jJKbcgW_OR6OidQ', 'UZ8YjpEXXPBYmROvPnJ5jw', debug=True, batch=[{
+        res = post('key', 'secret', debug=True, batch=[{
             'contact_uid': 'contact_uid',
             'method': 'set_contact'
         }])
