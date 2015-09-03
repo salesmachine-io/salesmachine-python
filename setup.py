@@ -7,18 +7,16 @@ try:
 except ImportError:
     from distutils.core import setup
 
-# Don't import analytics-python module here, since deps may not be installed
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'analytics'))
+# Don't import salesmachine-python module here, since deps may not be installed
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'salesmachine'))
 from version import VERSION
 
 long_description = '''
-Segment is the simplest way to integrate analytics into your application.
-One API allows you to turn on any other analytics service. No more learning
-new APIs, repeated code, and wasted development time.
+Salesmachine.io is the next generation of CRM.
 
-This is the official python client that wraps the Segment REST API (https://segment.com).
+This is the official python client that wraps the Salesmachine.io REST API (http://salesmachine.io).
 
-Documentation and more details at https://github.com/segmentio/analytics-python
+Documentation and more details at https://github.com/salesmachine-io/salesmachine-python
 '''
 
 setup(
@@ -29,14 +27,14 @@ setup(
     author_email='friends@segment.com',
     maintainer='Salesmachine',
     maintainer_email='friends@segment.com',
-    test_suite='analytics.test.all',
-    packages=['analytics', 'analytics.test'],
+    test_suite='salesmachine.test.all',
+    packages=['salesmachine', 'salesmachine.test'],
     license='MIT License',
     install_requires=[
         'python-dateutil',
         'requests',
         'six'
     ],
-    description='The hassle-free way to integrate analytics into any python application.',
+    description='The hassle-free way to integrate Salesmachine.io into any python application.',
     long_description=long_description
 )
